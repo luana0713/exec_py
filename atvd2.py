@@ -2,13 +2,13 @@ import cv2
 import numpy as np
 
 # --- Ler imagem ---
-img = cv2.imread('/tmp/render_cg.png')  # render do Blender
+img = cv2.imread('render_cg.png')  # render do Blender
 
 if img is None:
     # Cria imagem sintética para o lab
     img = np.random.randint(0, 255, (540, 960, 3), dtype=np.uint8)
-    cv2.imwrite('/tmp/render_cg.png', img)
-    img = cv2.imread('/tmp/render_cg.png')
+    cv2.imwrite('render_cg.png', img)
+    img = cv2.imread('render_cg.png')
 
 print(f'Shape: {img.shape}')            # (altura, largura, 3)
 print(f'Dtype: {img.dtype}')            # uint8
@@ -16,12 +16,12 @@ print(f'Min/Max: {img.min()}/{img.max()}')
 
 # --- Recortar (crop) ---
 recorte = img[100:300, 200:500]        # [y_ini:y_fim, x_ini:x_fim]
-cv2.imwrite('/tmp/crop.png', recorte)
+cv2.imwrite('crop.png', recorte)
 
 # --- Redimensionar ---
 pequena = cv2.resize(img, (320, 180))
 grande  = cv2.resize(img, (1920, 1080), interpolation=cv2.INTER_CUBIC)
-cv2.imwrite('/tmp/pequena.png', pequena)
+cv2.imwrite('pequena.png', pequena)
 
 # --- Espelhar ---
 flip_h = cv2.flip(img, 1)              # horizontal (1), vertical (0), ambos (-1)

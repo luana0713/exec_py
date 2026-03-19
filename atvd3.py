@@ -1,13 +1,13 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('/tmp/render_cg.png')
+img = cv2.imread('render_cg.png')
 if img is None:
     # Criar imagem de teste com formas geométricas
     img = np.zeros((480, 640, 3), dtype=np.uint8)
     cv2.rectangle(img, (50, 50), (300, 300), (200, 100, 50), -1)
     cv2.circle(img, (450, 240), 120, (50, 150, 200), -1)
-    cv2.imwrite('/tmp/render_cg.png', img)
+    cv2.imwrite('render_cg.png', img)
 
 cinza = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -34,6 +34,6 @@ comparacao = np.hstack([
     cv2.cvtColor(magnitude_grad, cv2.COLOR_GRAY2BGR)
 ])
 
-cv2.imwrite('/tmp/comparacao_filtros.png', comparacao)
-print("Comparação salva em /tmp/comparacao_filtros.png")
+cv2.imwrite('comparacao_filtros.png', comparacao)
+print("Comparação salva em comparacao_filtros.png")
 print(f"Imagem final: {comparacao.shape[1]}x{comparacao.shape[0]}")
